@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나의 첫 번째 웹사이트</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .avatar {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
+    }
+    h1 { font-size: 1.8rem; color: #2d3748; margin-bottom: 8px; }
+    .subtitle { color: #718096; font-size: 1rem; margin-bottom: 24px; }
+    .message {
+      background: #f7fafc;
+      border-left: 4px solid #667eea;
+      padding: 16px;
+      border-radius: 8px;
+      color: #4a5568;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="avatar">👋</div>
+    <h1>안녕하세요!</h1>
+    <p class="subtitle">나의 첫 번째 웹사이트에 오신 것을 환영합니다</p>
+    <div class="message">
+      이 페이지는 GitHub Pages를 통해 배포된<br>
+      나의 첫 번째 웹사이트입니다.<br><br>
+      앞으로 멋진 프로젝트들로 채워나갈 예정입니다. 🚀
+    </div>
+    <span class="badge">Powered by GitHub Pages</span>
+  </div>
+</body>
+</html>
