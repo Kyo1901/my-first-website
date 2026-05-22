@@ -1,4 +1,4 @@
-name: Deploy Roundit Community to GitHub Pages
+name: Deploy GymStory SNS to GitHub Pages
 
 on:
   push:
@@ -31,11 +31,11 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        working-directory: lecture1/roundit-community
+        working-directory: lecture1/gymstory_sns
         run: npm install
 
       - name: Build
-        working-directory: lecture1/roundit-community
+        working-directory: lecture1/gymstory_sns
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
@@ -47,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'lecture1/roundit-community/dist'
+          path: 'lecture1/gymstory_sns/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
