@@ -39,7 +39,7 @@ function CreatePostPage() {
   }, [user, navigate]);
 
   useEffect(() => {
-    supabase.from('boards').select('id, name').order('name')
+    supabase.from('roundit_boards').select('id, name').order('name')
       .then(({ data }) => setBoards(data || []));
   }, []);
 
@@ -52,7 +52,7 @@ function CreatePostPage() {
     setError('');
     setSubmitting(true);
 
-    const { data, error: err } = await supabase.from('posts').insert({
+    const { data, error: err } = await supabase.from('roundit_posts').insert({
       title: title.trim(),
       content: content.trim() || null,
       post_type: postType,

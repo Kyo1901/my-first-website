@@ -13,11 +13,11 @@ export function usePosts(boardId = null, sortBy = 'hot') {
   const fetchPosts = useCallback(async () => {
     setLoading(true);
     let query = supabase
-      .from('posts')
+      .from('roundit_posts')
       .select(`
         *,
-        users!author_id(id, username, profile_img),
-        boards!board_id(id, name)
+        roundit_users!author_id(id, username, profile_img),
+        roundit_boards!board_id(id, name)
       `);
 
     if (boardId) query = query.eq('board_id', boardId);

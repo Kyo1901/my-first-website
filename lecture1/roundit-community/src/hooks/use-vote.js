@@ -13,7 +13,7 @@ export function useVote(targetType, targetId, userId) {
   useEffect(() => {
     if (!userId || !targetId) return;
     supabase
-      .from('votes')
+      .from('roundit_votes')
       .select('vote_type')
       .eq('user_id', userId)
       .eq('target_type', targetType)
@@ -27,7 +27,7 @@ export function useVote(targetType, targetId, userId) {
 
     if (userVote === voteType) {
       await supabase
-        .from('votes')
+        .from('roundit_votes')
         .delete()
         .eq('user_id', userId)
         .eq('target_type', targetType)
@@ -35,14 +35,14 @@ export function useVote(targetType, targetId, userId) {
       setUserVote(null);
     } else if (userVote) {
       await supabase
-        .from('votes')
+        .from('roundit_votes')
         .update({ vote_type: voteType })
         .eq('user_id', userId)
         .eq('target_type', targetType)
         .eq('target_id', targetId);
       setUserVote(voteType);
     } else {
-      await supabase.from('votes').insert({
+      await supabase.from('roundit_votes').insert({
         user_id: userId,
         target_type: targetType,
         target_id: targetId,

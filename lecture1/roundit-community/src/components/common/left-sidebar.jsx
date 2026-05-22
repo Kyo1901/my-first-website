@@ -29,7 +29,7 @@ function LeftSidebar() {
 
   async function fetchBoards() {
     const { data } = await supabase
-      .from('boards')
+      .from('roundit_boards')
       .select('*')
       .order('member_cnt', { ascending: false });
     setBoards(data || []);
@@ -37,7 +37,7 @@ function LeftSidebar() {
 
   async function fetchSubscribedBoards() {
     const { data } = await supabase
-      .from('board_members')
+      .from('roundit_board_members')
       .select('board_id')
       .eq('user_id', user.id);
     setSubscribedBoards(new Set((data || []).map(m => m.board_id)));
@@ -48,7 +48,7 @@ function LeftSidebar() {
     if (!user) { navigate('/login'); return; }
 
     if (subscribedBoards.has(boardId)) {
-      await supabase.from('board_members')
+      await supabase.from('roundit_board_members')
         .delete()
         .eq('user_id', user.id)
         .eq('board_id', boardId);
@@ -58,7 +58,7 @@ function LeftSidebar() {
         return s;
       });
     } else {
-      await supabase.from('board_members')
+      await supabase.from('roundit_board_members')
         .insert({ user_id: user.id, board_id: boardId });
       setSubscribedBoards(prev => new Set(prev).add(boardId));
     }

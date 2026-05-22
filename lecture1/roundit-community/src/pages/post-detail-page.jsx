@@ -31,8 +31,8 @@ function PostDetailPage() {
 
   const fetchPost = useCallback(async () => {
     const { data } = await supabase
-      .from('posts')
-      .select('*, users!author_id(id, username), boards!board_id(id, name, description, member_cnt)')
+      .from('roundit_posts')
+      .select('*, roundit_users!author_id(id, username), roundit_boards!board_id(id, name, description, member_cnt)')
       .eq('id', postId)
       .single();
     setPost(data);
@@ -40,8 +40,8 @@ function PostDetailPage() {
 
   const fetchComments = useCallback(async () => {
     const { data } = await supabase
-      .from('comments')
-      .select('*, users!author_id(id, username)')
+      .from('roundit_comments')
+      .select('*, roundit_users!author_id(id, username)')
       .eq('post_id', postId)
       .order('vote_score', { ascending: false });
     setComments(data || []);
@@ -59,7 +59,7 @@ function PostDetailPage() {
   async function handleSubmitComment() {
     if (!newComment.trim() || !user) return;
     setSubmitting(true);
-    await supabase.from('comments').insert({
+    await supabase.from('roundit_comments').insert({
       content: newComment.trim(),
       author_id: user.id,
       post_id: parseInt(postId),
@@ -105,16 +105,16 @@ function PostDetailPage() {
                 <Box sx={{ flex: 1, p: 2, minWidth: 0 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1, flexWrap: 'wrap' }}>
                     <Chip
-                      label={`r/${post.boards?.name}`}
+                      label={`r/${post.roundit_boards?.name}`}
                       size="small"
-                      onClick={() => navigate(`/r/${encodeURIComponent(post.boards?.name || '')}`)}
+                      onClick={() => navigate(`/r/${encodeURIComponent(post.roundit_boards?.name || '')}`)}
                       sx={{ cursor: 'pointer', fontWeight: 700, bgcolor: 'primary.main', color: '#fff', height: 20, fontSize: '11px' }}
                     />
                     {post.flair && (
                       <Chip label={post.flair} size="small" color="primary" variant="outlined" sx={{ height: 18, fontSize: '10px' }} />
                     )}
                     <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                      u/{post.users?.username || '알 수 없음'} · {formatTime(post.created_at)}
+                      u/{post.roundit_users?.username || '알 수 없음'} · {formatTime(post.created_at)}
                     </Typography>
                   </Box>
 

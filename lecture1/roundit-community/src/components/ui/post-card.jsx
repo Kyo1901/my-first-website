@@ -26,18 +26,18 @@ function PostCard({ post }) {
   const { user } = useAuth();
   const [isBookmarked, setIsBookmarked] = useState(false);
 
-  const boardName = post.boards?.name || '';
-  const authorName = post.users?.username || '알 수 없음';
+  const boardName = post.roundit_boards?.name || '';
+  const authorName = post.roundit_users?.username || '알 수 없음';
   const timeAgo = formatTime(post.created_at);
 
   const handleBookmark = async (e) => {
     e.stopPropagation();
     if (!user) { navigate('/login'); return; }
     if (isBookmarked) {
-      await supabase.from('bookmarks').delete().eq('user_id', user.id).eq('post_id', post.id);
+      await supabase.from('roundit_bookmarks').delete().eq('user_id', user.id).eq('post_id', post.id);
       setIsBookmarked(false);
     } else {
-      await supabase.from('bookmarks').insert({ user_id: user.id, post_id: post.id });
+      await supabase.from('roundit_bookmarks').insert({ user_id: user.id, post_id: post.id });
       setIsBookmarked(true);
     }
   };

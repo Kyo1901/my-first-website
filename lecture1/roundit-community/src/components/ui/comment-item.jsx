@@ -27,12 +27,12 @@ function CommentItem({ comment, allComments, depth = 0, onReply }) {
   const [submitting, setSubmitting] = useState(false);
 
   const replies = allComments.filter(c => c.parent_id === comment.id);
-  const authorName = comment.users?.username || '알 수 없음';
+  const authorName = comment.roundit_users?.username || '알 수 없음';
 
   async function handleSubmitReply() {
     if (!replyContent.trim() || !user) return;
     setSubmitting(true);
-    await supabase.from('comments').insert({
+    await supabase.from('roundit_comments').insert({
       content: replyContent.trim(),
       author_id: user.id,
       post_id: comment.post_id,

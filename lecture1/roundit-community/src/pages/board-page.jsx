@@ -22,7 +22,7 @@ function BoardPage() {
     async function fetchBoard() {
       setBoardLoading(true);
       const { data } = await supabase
-        .from('boards')
+        .from('roundit_boards')
         .select('*')
         .eq('name', decodeURIComponent(boardName))
         .single();

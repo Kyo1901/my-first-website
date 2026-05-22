@@ -81,11 +81,20 @@ function AuthPage() {
 
     setLoading(false);
     if (err) {
-      setError(err.message);
+      const msg = err.message?.toLowerCase() || '';
+      if (msg.includes('rate limit') || msg.includes('email rate')) {
+        setError('이메일 전송 한도를 초과했습니다. Supabase 대시보드에서 "Confirm email" 설정을 OFF로 변경하거나, 1시간 후 다시 시도해주세요.');
+      } else if (msg.includes('already registered') || msg.includes('already been registered')) {
+        setError('이미 가입된 이메일입니다. 로그인 탭을 이용해주세요.');
+      } else if (msg.includes('invalid email')) {
+        setError('올바른 이메일 형식이 아닙니다.');
+      } else {
+        setError(err.message);
+      }
     } else if (data.session) {
       navigate('/');
     } else {
-      setMessage('가입 확인 이메일을 보냈습니다. 이메일을 확인해주세요.');
+      setMessage('가입 확인 이메일을 보냈습니다. 이메일을 확인하거나, Supabase에서 "Confirm email"을 OFF로 설정하면 바로 로그인할 수 있습니다.');
     }
   };
 
