@@ -1,4 +1,11 @@
-이 프로젝트를 GitHub에 백업해줘
-- 저장소 이름: my-first-website
-- 공개 설정: public
-- 설명: 나의 첫 번째 웹사이트 프로젝트
+포트폴리오의 Projects 탭을 완전히 구현해줘! supabase mcp를 사용해서 데이터베이스를 구현해서 연결하고, 최종적으로 구현한 후에는 빌드하고 GitHub Pages로 배포까지 todo 계획을 세워서 순차적으로 모두 진행해줘.
+
+중요 구현 사항:
+1. projects 테이블의 detail_url 필드에는 배포된 프로젝트 사이트 URL 저장
+2. thumbnail_url은 image.thum.io API를 사용하여 자동 생성: https://image.thum.io/get/{detail_url}
+3. 별도의 이미지 스토리지는 사용하지 않고 API로 실시간 썸네일 제공
+
+GitHub Actions 워크플로우를 사용해서 자동 배포되도록 설정하고, 배포 완료 후 접속 가능한 URL을 안내해줘.
+
+기획서
+E:\SBS아카데미컴퓨터아트학원\수업\AI 바이브 웹\vibe_260508\my_ai_web\포트폴리오 기획\Projects.txt

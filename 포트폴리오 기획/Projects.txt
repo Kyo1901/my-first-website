@@ -1,0 +1,67 @@
+== Projects 탭 UI/UX 기획서 ==
+
+선택한 레이아웃 방식
+- 리스트 형태 레이아웃 (가로 긴 카드)
+
+썸네일 카드 구성
+이미지:
+- 타입: 스크린샷
+- 비율: 16:9
+- 크기: 가로 800px
+
+정보 표시:
+- 프로젝트 이름 (제목)
+- 한 줄 설명:
+- 기술 스택: 아이콘 + 텍스트
+- 기타 정보: 링크 및 버튼
+
+링크 및 버튼:
+- Live Demo 버튼
+- GitHub 버튼
+
+인터랙션 효과
+- 호버 효과: 카드 테두리 + 그림자 설정
+- 클릭 피드백: 버튼 애니메이션
+- 모바일 터치: 터치 피드백, 스와이프 지원
+
+반응형 설계
+- 데스크톱: 1열 그리드
+- 태블릿: 1열 그리드
+- 모바일: 1열 그리드
+- 특별 고려사항:
+    - 모바일에서는 썸네일 상단, 프로젝트 정보를 하단에 배치
+       = 세로로된 카드 형식
+
+== 기획 완료 ==
+
+== Projects 테이블 DB 구조 정리 ==
+
+프로젝트 정보 (projects 테이블)
+- Projects 탭 UI에서 필요한 정보들:
+  * id: (프로젝트 고유번호 - 자동으로 1, 2, 3... 증가)
+  * title: (프로젝트 제목)
+  * description: (프로젝트 설명)
+  * tech_stack: (기술 스택 배열 - ["React", "Supabase", "CSS3"])
+  * detail_url: (배포된 사이트 링크)
+  * thumbnail_url: (썸네일 이미지 경로)
+  * is_published: (게시 여부 - true/false)
+  * sort_order: (표시 순서)
+  * created_at: (생성일시)
+  * updated_at: (수정일시)
+
+기본 프로젝트 데이터:
+프로젝트 1 (Lesson2):
+- title: "Roundit 커뮤니티"
+- description: "Supabase와 React로 구현한 실시간 커뮤니티"
+- tech_stack: ["React", "Supabase", "PostgreSQL", "CSS3"]
+- detail_url: "https://kyo1901.github.io/roundit-community"
+- thumbnail_url: "https://image.thum.io/get/https://kyo1901.github.io/roundit-community"
+
+프로젝트 2 (Lesson3):
+- title: "Gym Story SNS"
+- description: "자신의 운동 경험을 공유하는 모바일 퍼스트 소셜 미디어 웹앱"
+- tech_stack: ["React", "Supabase", "Unsplash API", "MUI"]
+- detail_url: "https://kyo1901.github.io/gymstory-sns"
+- thumbnail_url: "https://image.thum.io/get/https://kyo1901.github.io/gymstory-sns"
+
+== Projects DB 구조 정리 완료 ==
